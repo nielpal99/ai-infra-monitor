@@ -20,7 +20,7 @@ from typing import Optional
 
 EDGAR_BASE  = "https://data.sec.gov"
 USER_AGENT  = "nielpal niel@example.com"   # required by EDGAR fair-use policy
-WATCH_FORMS = {"10-K", "10-Q", "8-K"}
+WATCH_FORMS = {"10-K", "10-Q", "8-K", "20-F", "6-K"}
 
 LAST_SEEN_PATH = Path(__file__).parent.parent / "data" / "last_seen.json"
 
@@ -31,17 +31,62 @@ WATCHLIST = {
     "NVDA": "0001045810",   # NVIDIA
     "AMD":  "0000002488",   # Advanced Micro Devices
     "INTC": "0000050863",   # Intel
-    "ARM":  "0001764046",   # Arm Holdings
-    "MRVL": "0001058057",   # Marvell Technology
-    # Networking & infrastructure
-    "AVGO": "0001730168",   # Broadcom
-    "ANET": "0001596532",   # Arista Networks
-    # Memory & storage
-    "MU":   "0000723125",   # Micron Technology
-    # Foundry
-    "TSM":  "0001046179",   # Taiwan Semiconductor (20-F)
+    "QCOM": "0000804328",   # Qualcomm
+    "MRVL": "0001835632",   # Marvell Technology, Inc. (post-redomiciliation, CIK confirmed)
+    "ARM":  "0001824168",   # Arm Holdings
     # GPU cloud
     "CRWV": "0001769628",   # CoreWeave
+    # Server & systems
+    "SMCI": "0001375365",   # Super Micro Computer
+    # Foundry
+    "TSM":  "0001046179",   # Taiwan Semiconductor (20-F / 6-K)
+    # Semiconductor equipment
+    "AMAT": "0000006951",   # Applied Materials
+    "LRCX": "0000707549",   # Lam Research
+    "KLAC": "0000319201",   # KLA Corporation
+    "TER":  "0000097210",   # Teradyne
+    "ENTG": "0001101302",   # Entegris
+    "ONTO": "0001113232",   # Onto Innovation
+    "ASML": "0000937556",   # ASML (20-F)
+    # Memory & storage
+    "MU":   "0000723125",   # Micron Technology
+    "WDC":  "0000106040",   # Western Digital
+    "STX":  "0001137789",   # Seagate Technology
+    # Networking & infrastructure
+    "ANET": "0001596532",   # Arista Networks
+    "CSCO": "0000858877",   # Cisco Systems
+    "CIEN": "0000936395",   # Ciena
+    "INFN": "0001101239",   # Infinera
+    # Hyperscalers
+    "MSFT": "0000789019",   # Microsoft
+    "GOOGL":"0001652044",   # Alphabet
+    "AMZN": "0001018724",   # Amazon
+    "META": "0001326801",   # Meta Platforms
+    # Enterprise software & cloud data
+    "ORCL": "0001341439",   # Oracle
+    "SNOW": "0001640147",   # Snowflake
+    "DDOG": "0001666134",   # Datadog
+    "MDB":  "0001441816",   # MongoDB
+    "NET":  "0001477333",   # Cloudflare
+    "CFLT": "0001571123",   # Confluent
+    "GTLB": "0001809987",   # GitLab
+    # Networking & mixed-signal semiconductors
+    "AVGO": "0001730168",   # Broadcom
+    "MCHP": "0000827054",   # Microchip Technology
+    "SWKS": "0000004127",   # Skyworks Solutions
+    "QRVO": "0001604778",   # Qorvo
+    "MTSI": "0001493594",   # MACOM Technology
+    # Power & data center infrastructure
+    "VST":  "0001692819",   # Vistra
+    "ETN":  "0000031462",   # Eaton
+    # Packaging
+    "AMKR": "0001047127",   # Amkor Technology
+    # Consumer & enterprise tech
+    "AAPL": "0000320193",   # Apple
+    "NFLX": "0001065280",   # Netflix
+    "CRM":  "0001108524",   # Salesforce
+    "NOW":  "0001373715",   # ServiceNow
+    "PLTR": "0001321655",   # Palantir
 }
 
 # ── EDGAR helpers ─────────────────────────────────────────────────────────────
