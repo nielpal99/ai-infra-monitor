@@ -33,7 +33,7 @@ WATCHLIST = {
     "INTC": "0000050863",   # Intel
     "QCOM": "0000804328",   # Qualcomm
     "MRVL": "0001835632",   # Marvell Technology, Inc. (post-redomiciliation, CIK confirmed)
-    "ARM":  "0001824168",   # Arm Holdings
+    "ARM":  "0001973239",   # Arm Holdings PLC /UK (IPO 2023, CIK confirmed)
     # GPU cloud
     "CRWV": "0001769628",   # CoreWeave
     # Server & systems
