@@ -63,10 +63,11 @@ def _connect() -> snowflake.connector.SnowflakeConnection:
 def filter_usd(rows: list[dict]) -> list[dict]:
     """Keep only USD-denominated facts.
 
+    Accepts both "USD" (monetary values) and "USD/shares" (EPS).
     Drops TWD, EUR, and other non-USD entries so that every value in
     raw_xbrl_facts is directly comparable across companies.
     """
-    return [r for r in rows if r.get("unit") == "USD"]
+    return [r for r in rows if r.get("unit") in ("USD", "USD/shares")]
 
 
 # ── loading ───────────────────────────────────────────────────────────────────
