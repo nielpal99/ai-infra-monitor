@@ -134,17 +134,29 @@ def _extract_concept(
 ) -> list[dict]:
     """Extract qualifying facts for one canonical concept from one taxonomy.
 
-    Tries each variant in order and returns rows from the first one found.
+    Collects rows from every variant that has matching data, then returns
+    only the rows belonging to the variant whose most recent period_end is
+    latest.  This ensures companies that switched XBRL tags over time (e.g.
+    AMD moving from Revenues → RevenueFromContractWithCustomerExcludingAssessedTax)
+    are represented by the tag that covers their current filings, not an older
+    tag that may only have data from a decade ago.
+
     Skips entries whose form type is not in *watch_forms*.
 
     Returns:
         List of fact dicts. Empty if no variant or no matching entries found.
     """
     tax_data = facts.get(taxonomy, {})
+
+    # Collect rows per variant, tracking each variant's most recent period_end
+    best_variant: str | None = None
+    best_max_date: str = ""
+    rows_by_variant: dict[str, list[dict]] = {}
+
     for variant in variants:
         if variant not in tax_data:
             continue
-        rows = []
+        rows: list[dict] = []
         for unit, entries in tax_data[variant].get("units", {}).items():
             for e in entries:
                 if e.get("form") not in watch_forms:
@@ -165,9 +177,15 @@ def _extract_concept(
                     "fy":            e.get("fy"),
                     "fp":            e.get("fp"),
                 })
-        if rows:
-            return rows   # stop at first variant that has data
-    return []
+        if not rows:
+            continue
+        rows_by_variant[variant] = rows
+        max_date = max(r["period_end"] for r in rows)
+        if max_date > best_max_date:
+            best_max_date = max_date
+            best_variant = variant
+
+    return rows_by_variant.get(best_variant, []) if best_variant else []
 
 
 def extract_facts(
