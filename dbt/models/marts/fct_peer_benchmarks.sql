@@ -5,18 +5,15 @@
 }}
 
 /*
-  One row per (peer_group, period_end, metric).
+  One row per (peer_group, fiscal_year, metric).
 
-  Assigns each ticker to an analyst peer group, unpivots four margin metrics
-  to long format, then computes p25 / median / p75 distribution statistics
-  across each group for each annual period.
+  Groups by calendar year (YEAR(period_end)) rather than exact period_end so
+  that companies with different fiscal year-end dates land in the same cohort.
+  NVDA (Jan), AMD (Dec), and TSM (Dec) all become fiscal_year = 2025 and are
+  benchmarked together, giving meaningful peer group sizes.
 
-  Annual filings only (is_annual = true) so 10-K and 20-F periods are
-  compared directly — this is intentional for cross-company benchmarking
-  (e.g. NVDA 10-K vs TSM 20-F both represent a fiscal year).
-
-  Percentiles use PERCENTILE_CONT which interpolates between values, giving
-  a smooth median even for small peer groups.
+  Annual filings only (is_annual = true). Percentiles use PERCENTILE_CONT
+  which interpolates between values, giving a smooth median for small groups.
 */
 
 with base as (
@@ -89,28 +86,28 @@ unpivoted as (
     -- Unpivot four margin columns to long format so a single aggregation
     -- block computes all metrics uniformly.
 
-    select ticker, peer_group, period_end,
+    select ticker, peer_group, year(period_end) as fiscal_year,
            'gross_margin_pct'     as metric,
            gross_margin_pct       as value
     from base
 
     union all
 
-    select ticker, peer_group, period_end,
+    select ticker, peer_group, year(period_end) as fiscal_year,
            'operating_margin_pct' as metric,
            operating_margin_pct   as value
     from base
 
     union all
 
-    select ticker, peer_group, period_end,
+    select ticker, peer_group, year(period_end) as fiscal_year,
            'net_margin_pct'       as metric,
            net_margin_pct         as value
     from base
 
     union all
 
-    select ticker, peer_group, period_end,
+    select ticker, peer_group, year(period_end) as fiscal_year,
            'r_and_d_pct'          as metric,
            r_and_d_pct            as value
     from base
@@ -121,7 +118,7 @@ aggregated as (
 
     select
         peer_group,
-        period_end,
+        fiscal_year,
         metric,
         count(*)                                                         as n_companies,
         percentile_cont(0.25) within group (order by value)             as p25,
@@ -132,7 +129,7 @@ aggregated as (
 
     from unpivoted
     where value is not null
-    group by peer_group, period_end, metric
+    group by peer_group, fiscal_year, metric
 
 )
 

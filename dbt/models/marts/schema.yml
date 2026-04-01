@@ -87,12 +87,13 @@ models:
 
   - name: fct_peer_benchmarks
     description: >
-      One row per (peer_group, period_end, metric). Annual filings only.
-      Provides p25 / median / p75 distribution statistics for four margin
-      metrics across seven analyst-defined peer groups. Used for relative
-      positioning — z-scoring a company's metric against its group's median
-      and stddev. Peer group assignment is hardcoded in the CASE statement
-      in the model; update there when the watchlist changes.
+      One row per (peer_group, fiscal_year, metric). Annual filings only.
+      Groups by YEAR(period_end) so companies with different fiscal year-end
+      dates land in the same cohort — NVDA (Jan), AMD (Dec), and TSM (Dec)
+      all appear in fiscal_year = 2025. Provides p25 / median / p75
+      distribution statistics for four margin metrics across seven peer groups.
+      Peer group assignment is hardcoded in the model; update there when the
+      watchlist changes.
     columns:
       - name: peer_group
         description: >
@@ -101,8 +102,11 @@ models:
         data_tests:
           - not_null
 
-      - name: period_end
-        description: Fiscal year end date for this cohort snapshot.
+      - name: fiscal_year
+        description: >
+          Calendar year of the period_end date (YEAR(period_end)). Used instead
+          of exact period_end to align companies with different fiscal year-end
+          dates into the same annual cohort.
         data_tests:
           - not_null
 
