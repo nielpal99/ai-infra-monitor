@@ -161,6 +161,7 @@ def load_facts(
     rows: list[dict],
     conn: Optional[snowflake.connector.SnowflakeConnection] = None,
     dry_run: bool = False,
+    verbose: bool = True,
 ) -> tuple[int, int]:
     """Upsert *rows* into raw_xbrl_facts via a MERGE statement.
 
@@ -168,12 +169,15 @@ def load_facts(
         rows:    USD-filtered fact dicts from xbrl_parser.
         conn:    Existing Snowflake connection. Opens one from .env if None.
         dry_run: If True, skip the MERGE and just print what would happen.
+        verbose: If False, suppress staging/dry-run progress lines (used by
+                 batch scripts that print their own progress).
 
     Returns:
         (inserted, updated) row counts.
     """
     if not rows:
-        print("  No rows to load.")
+        if verbose:
+            print("  No rows to load.")
         return 0, 0
 
     owned = conn is None
@@ -187,7 +191,8 @@ def load_facts(
         cur.execute(_CREATE_STAGE)
         cur.execute(f"TRUNCATE TABLE {STAGING_TABLE}")
         cur.executemany(_INSERT_STAGE, [_row_to_tuple(r) for r in rows])
-        print(f"  Staged {len(rows)} rows into {STAGING_TABLE}")
+        if verbose:
+            print(f"  Staged {len(rows)} rows into {STAGING_TABLE}")
 
         # ── pre-count matches (= rows that will be updated) ────────────────────
         cur.execute(_COUNT_MATCHES)
@@ -195,8 +200,9 @@ def load_facts(
         insert_count = len(rows) - update_count
 
         if dry_run:
-            print(f"  [dry-run] Would insert {insert_count}, update {update_count} rows.")
-            print(f"  [dry-run] MERGE into {TARGET_TABLE} skipped.")
+            if verbose:
+                print(f"  [dry-run] Would insert {insert_count}, update {update_count} rows.")
+                print(f"  [dry-run] MERGE into {TARGET_TABLE} skipped.")
             return insert_count, update_count
 
         # ── merge ──────────────────────────────────────────────────────────────
@@ -208,6 +214,34 @@ def load_facts(
     finally:
         if owned:
             conn.close()
+
+
+# ── convenience wrapper ───────────────────────────────────────────────────────
+
+def load_ticker(
+    ticker: str,
+    cik: str,
+    conn: Optional[snowflake.connector.SnowflakeConnection] = None,
+    dry_run: bool = False,
+) -> tuple[int, int]:
+    """Fetch XBRL facts for *ticker* and load them into raw_xbrl_facts.
+
+    Combines parse_ticker() + filter_usd() + load_facts() into one call.
+    Intended for use by batch scripts that manage a shared connection.
+    Runs load_facts() with verbose=False — callers print their own progress.
+
+    Args:
+        ticker:  Ticker symbol.
+        cik:     EDGAR CIK, optionally zero-padded.
+        conn:    Existing Snowflake connection. Opens one from .env if None.
+        dry_run: Skip the MERGE; return projected counts only.
+
+    Returns:
+        (inserted, updated) row counts.
+    """
+    cik = cik.zfill(10)
+    rows = filter_usd(parse_ticker(ticker.upper(), cik))
+    return load_facts(rows, conn=conn, dry_run=dry_run, verbose=False)
 
 
 # ── main ──────────────────────────────────────────────────────────────────────
