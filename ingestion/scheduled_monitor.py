@@ -1,14 +1,16 @@
 """
 Modal scheduled job for the ai-infra-monitor pipeline.
 
-Runs daily at 06:00 ET (10:00 UTC). Orchestrates three steps:
+Runs daily at 06:00 ET (10:00 UTC). Orchestrates four steps:
 
-  1. edgar_monitor.run_monitor()  — poll EDGAR for new filings across all 47
-                                    watchlist tickers; returns list of new filings
+  1. edgar_monitor.run_monitor()    — poll EDGAR for new filings across all 47
+                                      watchlist tickers; returns list of new filings
   2. snowflake_loader.load_ticker() — for each ticker with new filings, refresh
                                        its XBRL facts in Snowflake
-  3. dbt run                       — rebuild fct_company_metrics and
-                                      fct_peer_benchmarks from the updated facts
+  3. dbt run                        — rebuild fct_company_metrics and
+                                       fct_peer_benchmarks from the updated facts
+  4. slack_webhook.check_thresholds() — evaluate alert rules against updated
+                                        metrics and post to Slack if any fire
 
 Modal captures all stdout automatically; run history is visible in the
 Modal dashboard under the "ai-infra-monitor" app.
@@ -87,8 +89,9 @@ def run_daily_pipeline() -> None:
     import sys
     sys.path.insert(0, "/app")
 
-    from ingestion.edgar_monitor   import run_monitor, WATCHLIST
+    from ingestion.edgar_monitor    import run_monitor, WATCHLIST
     from ingestion.snowflake_loader import load_ticker, _connect
+    from alerts.slack_webhook       import check_thresholds, send_alert
 
     # ── Step 1: EDGAR filing check ─────────────────────────────────────────────
 
@@ -102,11 +105,37 @@ def run_daily_pipeline() -> None:
         print("\nNo new filings detected. Pipeline complete.")
         return
 
-    # Deduplicate to one load per ticker (a single filing day may have multiple
-    # form types — e.g. both a 10-Q and an 8-K — but one XBRL load covers all).
-    tickers_to_load = sorted({f["ticker"] for f in new_filings})
-    print(f"\n{len(new_filings)} new filing(s) across {len(tickers_to_load)} ticker(s): "
-          f"{', '.join(tickers_to_load)}")
+    print(f"\n{len(new_filings)} new filing(s) detected.")
+
+    # Only 10-K, 10-Q, and 20-F filings carry structured XBRL data worth
+    # loading. 8-Ks are current reports (press releases, material events) that
+    # rarely appear in the companyfacts API and would produce empty loads.
+    XBRL_FORMS = {"10-K", "10-Q", "20-F"}
+    xbrl_tickers = sorted({
+        f["ticker"] for f in new_filings if f["form_type"] in XBRL_FORMS
+    })
+
+    skipped = [f for f in new_filings if f["form_type"] not in XBRL_FORMS]
+    if skipped:
+        skip_summary = ", ".join(f"{f['ticker']} ({f['form_type']})" for f in skipped)
+        print(f"  Skipping {len(skipped)} non-XBRL filing(s): {skip_summary}")
+
+    if not xbrl_tickers:
+        print("\nNo XBRL-bearing filings. Skipping load and dbt steps.")
+        return
+
+    print(f"  Loading XBRL for {len(xbrl_tickers)} ticker(s): {', '.join(xbrl_tickers)}")
+
+    # Build a per-ticker lookup of the triggering filing's form and date so the
+    # alert step can include them in the Slack message without an extra query.
+    # When a ticker has multiple qualifying filings in one day, use the latest.
+    xbrl_filing: dict[str, dict] = {}
+    for f in new_filings:
+        if f["form_type"] not in XBRL_FORMS:
+            continue
+        ticker = f["ticker"]
+        if ticker not in xbrl_filing or f["filed_date"] > xbrl_filing[ticker]["filed_date"]:
+            xbrl_filing[ticker] = f
 
     # ── Step 2: XBRL load for affected tickers ─────────────────────────────────
 
@@ -118,7 +147,7 @@ def run_daily_pipeline() -> None:
     load_errors: list[str] = []
 
     try:
-        for ticker in tickers_to_load:
+        for ticker in xbrl_tickers:
             cik = WATCHLIST[ticker]
             try:
                 inserted, updated = load_ticker(ticker, cik, conn=conn)
@@ -158,13 +187,48 @@ def run_daily_pipeline() -> None:
         print(f"\ndbt run failed (exit {result.returncode})", file=sys.stderr)
         sys.exit(result.returncode)
 
+    # ── Step 4: Slack alerts ───────────────────────────────────────────────────
+
+    print("\n" + "=" * 60)
+    print("Step 4 — Evaluating alert thresholds")
+    print("=" * 60)
+
+    alert_errors: list[str] = []
+
+    for ticker in xbrl_tickers:
+        if ticker in load_errors:
+            print(f"  [{ticker}]  skipped (load failed)")
+            continue
+        try:
+            result = check_thresholds(ticker)
+            if result is None:
+                print(f"  [{ticker}]  no thresholds breached")
+                continue
+
+            alert_type, details = result
+            filing = xbrl_filing[ticker]
+            send_alert(
+                ticker     = ticker,
+                form       = filing["form_type"],
+                filed_date = filing["filed_date"],
+                alert_type = alert_type,
+                details    = details,
+            )
+            print(f"  [{ticker}]  alert posted: {alert_type}")
+        except Exception as exc:
+            print(f"  [{ticker}]  alert ERROR: {exc}", file=sys.stderr)
+            alert_errors.append(ticker)
+
     # ── Summary ────────────────────────────────────────────────────────────────
 
     print("\n" + "=" * 60)
-    status = "with errors" if load_errors else "successfully"
+    errors = load_errors + alert_errors
+    status = "with errors" if errors else "successfully"
     print(f"Pipeline complete {status}.")
     if load_errors:
-        print(f"  Failed tickers: {', '.join(load_errors)}")
+        print(f"  Load failures:  {', '.join(load_errors)}")
+    if alert_errors:
+        print(f"  Alert failures: {', '.join(alert_errors)}")
     print("=" * 60)
 
 
