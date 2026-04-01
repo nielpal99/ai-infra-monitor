@@ -61,3 +61,775 @@
 [0m23:50:17.170802 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c748a00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1259e3f40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12d11ca90>]}
 [0m23:50:17.171453 [debug] [MainThread]: Flushing usage events
 [0m23:50:17.430597 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m23:53:05.925185 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10aa749d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bb30b20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bb30d00>]}
+
+
+============================== 23:53:05.934090 | 403b5df8-fcbc-4153-9460-b0f7ea9fa6ca ==============================
+[0m23:53:05.934090 [info ] [MainThread]: Running with dbt=1.11.0-b3
+[0m23:53:05.934552 [debug] [MainThread]: running dbt with arguments {'use_colors': 'True', 'log_format': 'default', 'invocation_command': 'dbt run --select stg_xbrl_facts', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'cache_selected_only': 'False', 'target_path': 'None', 'log_path': '/Users/nielpal/Documents/ai-infra-monitor/dbt/logs', 'fail_fast': 'False', 'static_parser': 'True', 'write_json': 'True', 'version_check': 'True', 'partial_parse': 'True', 'no_print': 'None', 'printer_width': '80', 'send_anonymous_usage_stats': 'True', 'profiles_dir': '/Users/nielpal/.dbt', 'quiet': 'False', 'warn_error': 'None', 'introspect': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'debug': 'False', 'log_cache_events': 'False', 'empty': 'False'}
+[0m23:53:07.893946 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '403b5df8-fcbc-4153-9460-b0f7ea9fa6ca', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ad778e0>]}
+[0m23:53:07.956490 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '403b5df8-fcbc-4153-9460-b0f7ea9fa6ca', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b966bb0>]}
+[0m23:53:07.957400 [info ] [MainThread]: Registered adapter: snowflake=1.10.2
+[0m23:53:08.092058 [debug] [MainThread]: checksum: e63134dccc1251cfb572caf0e4aa952f030c125ee3634f3bf2c0a2e1bb6ae349, vars: {}, profile: , target: , version: 1.11.0b3
+[0m23:53:08.093585 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m23:53:08.093883 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '403b5df8-fcbc-4153-9460-b0f7ea9fa6ca', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x123e05880>]}
+[0m23:53:09.634639 [warn ] [MainThread]: [[33mWARNING[0m][MissingArgumentsPropertyInGenericTestDeprecation]: Deprecated
+functionality
+Found top-level arguments to test `accepted_values` defined on 'stg_xbrl_facts'
+in package 'ai_infra_monitor' (models/staging/schema.yml). Arguments to generic
+tests should be nested under the `arguments` property.
+[0m23:53:09.635298 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '403b5df8-fcbc-4153-9460-b0f7ea9fa6ca', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1243c7100>]}
+[0m23:53:09.905398 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.ai_infra_monitor.marts
+[0m23:53:09.912960 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '403b5df8-fcbc-4153-9460-b0f7ea9fa6ca', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12455ce50>]}
+[0m23:53:09.995512 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/nielpal/Documents/ai-infra-monitor/dbt/target/manifest.json
+[0m23:53:09.997408 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/nielpal/Documents/ai-infra-monitor/dbt/target/semantic_manifest.json
+[0m23:53:10.013711 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '403b5df8-fcbc-4153-9460-b0f7ea9fa6ca', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109f84340>]}
+[0m23:53:10.014120 [info ] [MainThread]: Found 1 model, 8 data tests, 1 source, 492 macros
+[0m23:53:10.014373 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '403b5df8-fcbc-4153-9460-b0f7ea9fa6ca', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109f84370>]}
+[0m23:53:10.015217 [info ] [MainThread]: 
+[0m23:53:10.015469 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m23:53:10.015640 [info ] [MainThread]: 
+[0m23:53:10.015977 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m23:53:10.016524 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_financial_intelligence'
+[0m23:53:10.072156 [debug] [ThreadPool]: Using snowflake connection "list_financial_intelligence"
+[0m23:53:10.073135 [debug] [ThreadPool]: On list_financial_intelligence: show terse schemas in database financial_intelligence
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.11.0b3", "profile_name": "ai_infra_monitor", "target_name": "dev", "connection_name": "list_financial_intelligence"} */
+[0m23:53:10.073785 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m23:53:14.682877 [debug] [ThreadPool]: SQL status: SUCCESS 5 in 4.608 seconds
+[0m23:53:14.691447 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_financial_intelligence, now create_financial_intelligence_staging_staging)
+[0m23:53:14.691989 [debug] [ThreadPool]: Creating schema "database: "financial_intelligence"
+schema: "staging_staging"
+"
+[0m23:53:14.701805 [debug] [ThreadPool]: Using snowflake connection "create_financial_intelligence_staging_staging"
+[0m23:53:14.702164 [debug] [ThreadPool]: On create_financial_intelligence_staging_staging: create schema if not exists financial_intelligence.staging_staging
+/* {"app": "dbt", "dbt_version": "1.11.0b3", "profile_name": "ai_infra_monitor", "target_name": "dev", "connection_name": "create_financial_intelligence_staging_staging"} */
+[0m23:53:14.845761 [debug] [ThreadPool]: Snowflake adapter: Snowflake query id: 01c368e9-0001-2ba2-0019-57e3001532c6
+[0m23:53:14.846152 [debug] [ThreadPool]: Snowflake adapter: Snowflake error: 003001 (42501): SQL access control error:
+Insufficient privileges to operate on database 'FINANCIAL_INTELLIGENCE'.
+[0m23:53:14.846605 [debug] [ThreadPool]: Snowflake adapter: Error running SQL: macro create_schema
+[0m23:53:14.846827 [debug] [ThreadPool]: Snowflake adapter: Rolling back transaction.
+[0m23:53:14.847484 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m23:53:14.847694 [debug] [MainThread]: Connection 'create_financial_intelligence_staging_staging' was left open.
+[0m23:53:14.847927 [debug] [MainThread]: On create_financial_intelligence_staging_staging: Close
+[0m23:53:14.979811 [info ] [MainThread]: 
+[0m23:53:14.980169 [info ] [MainThread]: Finished running  in 0 hours 0 minutes and 4.96 seconds (4.96s).
+[0m23:53:14.980829 [error] [MainThread]: Encountered an error:
+Database Error
+  003001 (42501): SQL access control error:
+  Insufficient privileges to operate on database 'FINANCIAL_INTELLIGENCE'.
+[0m23:53:14.982123 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- MissingArgumentsPropertyInGenericTestDeprecation: 2 occurrences
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m23:53:14.987287 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 9.172545, "process_in_blocks": "0", "process_kernel_time": 1.14357, "process_mem_max_rss": "199819264", "process_out_blocks": "0", "process_user_time": 5.202492}
+[0m23:53:14.987904 [debug] [MainThread]: Command `dbt run` failed at 23:53:14.987690 after 9.17 seconds
+[0m23:53:14.988279 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10aa749d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1243bec40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b3c39d0>]}
+[0m23:53:14.988607 [debug] [MainThread]: Flushing usage events
+[0m23:53:15.344098 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m23:53:53.683568 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1081c4a30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109280970>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109280b50>]}
+
+
+============================== 23:53:53.687503 | 305f1edd-7f77-44dc-a3e5-e14b4c39abc1 ==============================
+[0m23:53:53.687503 [info ] [MainThread]: Running with dbt=1.11.0-b3
+[0m23:53:53.687914 [debug] [MainThread]: running dbt with arguments {'invocation_command': 'dbt run --select stg_xbrl_facts', 'log_path': '/Users/nielpal/Documents/ai-infra-monitor/dbt/logs', 'empty': 'False', 'write_json': 'True', 'send_anonymous_usage_stats': 'True', 'version_check': 'True', 'log_format': 'default', 'warn_error': 'None', 'use_colors': 'True', 'profiles_dir': '/Users/nielpal/.dbt', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'no_print': 'None', 'cache_selected_only': 'False', 'quiet': 'False', 'printer_width': '80', 'log_cache_events': 'False', 'fail_fast': 'False', 'indirect_selection': 'eager', 'target_path': 'None', 'partial_parse': 'True', 'use_experimental_parser': 'False', 'debug': 'False', 'introspect': 'True'}
+[0m23:53:54.925684 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '305f1edd-7f77-44dc-a3e5-e14b4c39abc1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1279b7700>]}
+[0m23:53:54.980053 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '305f1edd-7f77-44dc-a3e5-e14b4c39abc1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1279a99d0>]}
+[0m23:53:54.981156 [info ] [MainThread]: Registered adapter: snowflake=1.10.2
+[0m23:53:55.128403 [debug] [MainThread]: checksum: e63134dccc1251cfb572caf0e4aa952f030c125ee3634f3bf2c0a2e1bb6ae349, vars: {}, profile: , target: , version: 1.11.0b3
+[0m23:53:55.224612 [info ] [MainThread]: Unable to do partial parsing because profile has changed
+[0m23:53:55.225041 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '305f1edd-7f77-44dc-a3e5-e14b4c39abc1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x127d4f430>]}
+[0m23:53:56.388299 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.ai_infra_monitor.marts
+[0m23:53:56.395689 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '305f1edd-7f77-44dc-a3e5-e14b4c39abc1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12831de20>]}
+[0m23:53:56.477036 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/nielpal/Documents/ai-infra-monitor/dbt/target/manifest.json
+[0m23:53:56.481073 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/nielpal/Documents/ai-infra-monitor/dbt/target/semantic_manifest.json
+[0m23:53:56.496150 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '305f1edd-7f77-44dc-a3e5-e14b4c39abc1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12833d130>]}
+[0m23:53:56.496581 [info ] [MainThread]: Found 1 model, 8 data tests, 1 source, 492 macros
+[0m23:53:56.496845 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '305f1edd-7f77-44dc-a3e5-e14b4c39abc1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12831de80>]}
+[0m23:53:56.497840 [info ] [MainThread]: 
+[0m23:53:56.498108 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m23:53:56.498280 [info ] [MainThread]: 
+[0m23:53:56.498588 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m23:53:56.499099 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_financial_intelligence'
+[0m23:53:56.544358 [debug] [ThreadPool]: Using snowflake connection "list_financial_intelligence"
+[0m23:53:56.544674 [debug] [ThreadPool]: On list_financial_intelligence: show terse schemas in database financial_intelligence
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.11.0b3", "profile_name": "ai_infra_monitor", "target_name": "dev", "connection_name": "list_financial_intelligence"} */
+[0m23:53:56.544900 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m23:54:00.150670 [debug] [ThreadPool]: SQL status: SUCCESS 5 in 3.605 seconds
+[0m23:54:00.153881 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_financial_intelligence, now create_financial_intelligence_staging_staging)
+[0m23:54:00.154479 [debug] [ThreadPool]: Creating schema "database: "financial_intelligence"
+schema: "staging_staging"
+"
+[0m23:54:00.163042 [debug] [ThreadPool]: Using snowflake connection "create_financial_intelligence_staging_staging"
+[0m23:54:00.163476 [debug] [ThreadPool]: On create_financial_intelligence_staging_staging: create schema if not exists financial_intelligence.staging_staging
+/* {"app": "dbt", "dbt_version": "1.11.0b3", "profile_name": "ai_infra_monitor", "target_name": "dev", "connection_name": "create_financial_intelligence_staging_staging"} */
+[0m23:54:00.312165 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.148 seconds
+[0m23:54:00.315304 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_financial_intelligence_staging_staging, now list_financial_intelligence_staging_staging)
+[0m23:54:00.327293 [debug] [ThreadPool]: Using snowflake connection "list_financial_intelligence_staging_staging"
+[0m23:54:00.327669 [debug] [ThreadPool]: On list_financial_intelligence_staging_staging: show objects in financial_intelligence.staging_staging
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.0b3", "profile_name": "ai_infra_monitor", "target_name": "dev", "connection_name": "list_financial_intelligence_staging_staging"} */;
+[0m23:54:00.527380 [debug] [ThreadPool]: SQL status: SUCCESS 0 in 0.199 seconds
+[0m23:54:00.535464 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '305f1edd-7f77-44dc-a3e5-e14b4c39abc1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1283c1c70>]}
+[0m23:54:00.545306 [debug] [Thread-1  ]: Began running node model.ai_infra_monitor.stg_xbrl_facts
+[0m23:54:00.545969 [info ] [Thread-1  ]: 1 of 1 START sql view model staging_staging.stg_xbrl_facts ..................... [RUN]
+[0m23:54:00.547423 [debug] [Thread-1  ]: Re-using an available connection from the pool (formerly list_financial_intelligence_staging_staging, now model.ai_infra_monitor.stg_xbrl_facts)
+[0m23:54:00.548095 [debug] [Thread-1  ]: Began compiling node model.ai_infra_monitor.stg_xbrl_facts
+[0m23:54:00.557934 [debug] [Thread-1  ]: Writing injected SQL for node "model.ai_infra_monitor.stg_xbrl_facts"
+[0m23:54:00.559390 [debug] [Thread-1  ]: Began executing node model.ai_infra_monitor.stg_xbrl_facts
+[0m23:54:00.580637 [debug] [Thread-1  ]: Writing runtime sql for node "model.ai_infra_monitor.stg_xbrl_facts"
+[0m23:54:00.582851 [debug] [Thread-1  ]: Using snowflake connection "model.ai_infra_monitor.stg_xbrl_facts"
+[0m23:54:00.583219 [debug] [Thread-1  ]: On model.ai_infra_monitor.stg_xbrl_facts: create or replace   view financial_intelligence.staging_staging.stg_xbrl_facts
+  
+  
+  
+  
+  as (
+    
+
+/*
+  Staging model for raw XBRL financial facts.
+
+  Filters raw_xbrl_facts down to:
+    - 8 canonical income statement / balance sheet concepts
+    - USD-denominated values only
+    - Annual (10-K, 20-F) and quarterly (10-Q) filings only
+
+  Deduplicates on (ticker, concept, period_end, form), keeping the most
+  recently filed row.  This handles cases where a company restates a period
+  in a later filing — the latest filed date wins.
+
+  Note: the capex concept is stored as 'CapitalExpendituresIncurringObligation'
+  in raw_xbrl_facts, matching the CONCEPT_MAP key in ingestion/xbrl_parser.py.
+*/
+
+with source as (
+
+    select * from financial_intelligence.staging.raw_xbrl_facts
+
+),
+
+filtered as (
+
+    select
+        ticker,
+        concept,
+        value::float          as value,
+        unit,
+        period_end::date      as period_end,
+        period_start::date    as period_start,
+        form,
+        filed::date           as filed,
+        fy,
+        fp,
+        accession,
+        loaded_at
+    from source
+    where concept in (
+        'Revenues',
+        'GrossProfit',
+        'OperatingIncomeLoss',
+        'NetIncomeLoss',
+        'ResearchAndDevelopmentExpense',
+        'CapitalExpendituresIncurringObligation',   -- capex
+        'Assets',
+        'CashAndCashEquivalentsAtCarryingValue'
+    )
+      and unit in ('USD', 'USD/shares')
+      -- 10-K / 10-Q for domestic filers; 20-F for foreign filers (TSM, ASML, ARM)
+      and form in ('10-K', '10-Q', '20-F')
+
+),
+
+deduped as (
+
+    select
+        *,
+        row_number() over (
+            partition by ticker, concept, period_end, form
+            order by filed desc
+        ) as _row_num
+    from filtered
+
+)
+
+select
+    ticker,
+    concept,
+    value,
+    unit,
+    period_end,
+    period_start,
+    form,
+    filed,
+    fy,
+    fp,
+    accession,
+    -- true for annual filings regardless of domestic vs foreign filer type
+    (form in ('10-K', '20-F'))  as is_annual,
+    loaded_at
+from deduped
+where _row_num = 1
+  )
+/* {"app": "dbt", "dbt_version": "1.11.0b3", "profile_name": "ai_infra_monitor", "target_name": "dev", "node_id": "model.ai_infra_monitor.stg_xbrl_facts"} */;
+[0m23:54:00.804375 [debug] [Thread-1  ]: SQL status: SUCCESS 1 in 0.221 seconds
+[0m23:54:00.824471 [debug] [Thread-1  ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '305f1edd-7f77-44dc-a3e5-e14b4c39abc1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x127df67f0>]}
+[0m23:54:00.824972 [info ] [Thread-1  ]: 1 of 1 OK created sql view model staging_staging.stg_xbrl_facts ................ [[32mSUCCESS 1[0m in 0.28s]
+[0m23:54:00.825524 [debug] [Thread-1  ]: Finished running node model.ai_infra_monitor.stg_xbrl_facts
+[0m23:54:00.826854 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m23:54:00.827081 [debug] [MainThread]: Connection 'model.ai_infra_monitor.stg_xbrl_facts' was left open.
+[0m23:54:00.827272 [debug] [MainThread]: On model.ai_infra_monitor.stg_xbrl_facts: Close
+[0m23:54:01.250616 [info ] [MainThread]: 
+[0m23:54:01.251699 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 4.75 seconds (4.75s).
+[0m23:54:01.255231 [debug] [MainThread]: Command end result
+[0m23:54:01.284184 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/nielpal/Documents/ai-infra-monitor/dbt/target/manifest.json
+[0m23:54:01.290091 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/nielpal/Documents/ai-infra-monitor/dbt/target/semantic_manifest.json
+[0m23:54:01.300406 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/nielpal/Documents/ai-infra-monitor/dbt/target/run_results.json
+[0m23:54:01.300732 [info ] [MainThread]: 
+[0m23:54:01.301075 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m23:54:01.301286 [info ] [MainThread]: 
+[0m23:54:01.301504 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m23:54:01.308217 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 7.7020206, "process_in_blocks": "0", "process_kernel_time": 0.885654, "process_mem_max_rss": "214892544", "process_out_blocks": "0", "process_user_time": 5.094229}
+[0m23:54:01.310171 [debug] [MainThread]: Command `dbt run` succeeded at 23:54:01.309689 after 7.70 seconds
+[0m23:54:01.310927 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1081c4a30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12799f8b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12833d130>]}
+[0m23:54:01.311277 [debug] [MainThread]: Flushing usage events
+[0m23:54:01.444737 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m23:54:19.949424 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10aa84970>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bb41af0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bb41cd0>]}
+
+
+============================== 23:54:19.953743 | ed1933b2-a856-47cd-937f-19c2d6b3deb3 ==============================
+[0m23:54:19.953743 [info ] [MainThread]: Running with dbt=1.11.0-b3
+[0m23:54:19.954160 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'version_check': 'True', 'quiet': 'False', 'invocation_command': 'dbt run --select stg_xbrl_facts', 'introspect': 'True', 'no_print': 'None', 'debug': 'False', 'log_path': '/Users/nielpal/Documents/ai-infra-monitor/dbt/logs', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'write_json': 'True', 'target_path': 'None', 'warn_error': 'None', 'use_experimental_parser': 'False', 'log_format': 'default', 'static_parser': 'True', 'profiles_dir': '/Users/nielpal/.dbt', 'fail_fast': 'False', 'empty': 'False', 'log_cache_events': 'False', 'indirect_selection': 'eager', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'cache_selected_only': 'False', 'use_colors': 'True'}
+[0m23:54:21.052667 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'ed1933b2-a856-47cd-937f-19c2d6b3deb3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b3b6f70>]}
+[0m23:54:21.105283 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'ed1933b2-a856-47cd-937f-19c2d6b3deb3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x123d618b0>]}
+[0m23:54:21.106044 [info ] [MainThread]: Registered adapter: snowflake=1.10.2
+[0m23:54:21.225130 [debug] [MainThread]: checksum: e63134dccc1251cfb572caf0e4aa952f030c125ee3634f3bf2c0a2e1bb6ae349, vars: {}, profile: , target: , version: 1.11.0b3
+[0m23:54:21.348265 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 1 files added, 0 files changed.
+[0m23:54:21.348727 [debug] [MainThread]: Partial parsing: added file: ai_infra_monitor://macros/generate_schema_name.sql
+[0m23:54:21.350539 [info ] [MainThread]: Unable to do partial parsing because change detected to override macro. Starting full parse.
+[0m23:54:22.616114 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.ai_infra_monitor.marts
+[0m23:54:22.623448 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'ed1933b2-a856-47cd-937f-19c2d6b3deb3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12471cee0>]}
+[0m23:54:22.704364 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/nielpal/Documents/ai-infra-monitor/dbt/target/manifest.json
+[0m23:54:22.706022 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/nielpal/Documents/ai-infra-monitor/dbt/target/semantic_manifest.json
+[0m23:54:22.718795 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'ed1933b2-a856-47cd-937f-19c2d6b3deb3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1240fd8e0>]}
+[0m23:54:22.719271 [info ] [MainThread]: Found 1 model, 8 data tests, 1 source, 493 macros
+[0m23:54:22.719513 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ed1933b2-a856-47cd-937f-19c2d6b3deb3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12415f4f0>]}
+[0m23:54:22.720291 [info ] [MainThread]: 
+[0m23:54:22.720522 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m23:54:22.720687 [info ] [MainThread]: 
+[0m23:54:22.721050 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m23:54:22.721590 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_financial_intelligence'
+[0m23:54:22.766317 [debug] [ThreadPool]: Using snowflake connection "list_financial_intelligence"
+[0m23:54:22.766742 [debug] [ThreadPool]: On list_financial_intelligence: show terse schemas in database financial_intelligence
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.11.0b3", "profile_name": "ai_infra_monitor", "target_name": "dev", "connection_name": "list_financial_intelligence"} */
+[0m23:54:22.766953 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m23:54:24.212954 [debug] [ThreadPool]: SQL status: SUCCESS 6 in 1.445 seconds
+[0m23:54:24.218038 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_financial_intelligence, now list_financial_intelligence_staging)
+[0m23:54:24.235217 [debug] [ThreadPool]: Using snowflake connection "list_financial_intelligence_staging"
+[0m23:54:24.235635 [debug] [ThreadPool]: On list_financial_intelligence_staging: show objects in financial_intelligence.staging
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.0b3", "profile_name": "ai_infra_monitor", "target_name": "dev", "connection_name": "list_financial_intelligence_staging"} */;
+[0m23:54:24.348505 [debug] [ThreadPool]: SQL status: SUCCESS 1 in 0.113 seconds
+[0m23:54:24.350694 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'ed1933b2-a856-47cd-937f-19c2d6b3deb3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10ad19a00>]}
+[0m23:54:24.353473 [debug] [Thread-1  ]: Began running node model.ai_infra_monitor.stg_xbrl_facts
+[0m23:54:24.353852 [info ] [Thread-1  ]: 1 of 1 START sql view model staging.stg_xbrl_facts ............................. [RUN]
+[0m23:54:24.354162 [debug] [Thread-1  ]: Re-using an available connection from the pool (formerly list_financial_intelligence_staging, now model.ai_infra_monitor.stg_xbrl_facts)
+[0m23:54:24.354383 [debug] [Thread-1  ]: Began compiling node model.ai_infra_monitor.stg_xbrl_facts
+[0m23:54:24.363692 [debug] [Thread-1  ]: Writing injected SQL for node "model.ai_infra_monitor.stg_xbrl_facts"
+[0m23:54:24.364521 [debug] [Thread-1  ]: Began executing node model.ai_infra_monitor.stg_xbrl_facts
+[0m23:54:24.384075 [debug] [Thread-1  ]: Writing runtime sql for node "model.ai_infra_monitor.stg_xbrl_facts"
+[0m23:54:24.385727 [debug] [Thread-1  ]: Using snowflake connection "model.ai_infra_monitor.stg_xbrl_facts"
+[0m23:54:24.386104 [debug] [Thread-1  ]: On model.ai_infra_monitor.stg_xbrl_facts: create or replace   view financial_intelligence.staging.stg_xbrl_facts
+  
+  
+  
+  
+  as (
+    
+
+/*
+  Staging model for raw XBRL financial facts.
+
+  Filters raw_xbrl_facts down to:
+    - 8 canonical income statement / balance sheet concepts
+    - USD-denominated values only
+    - Annual (10-K, 20-F) and quarterly (10-Q) filings only
+
+  Deduplicates on (ticker, concept, period_end, form), keeping the most
+  recently filed row.  This handles cases where a company restates a period
+  in a later filing — the latest filed date wins.
+
+  Note: the capex concept is stored as 'CapitalExpendituresIncurringObligation'
+  in raw_xbrl_facts, matching the CONCEPT_MAP key in ingestion/xbrl_parser.py.
+*/
+
+with source as (
+
+    select * from financial_intelligence.staging.raw_xbrl_facts
+
+),
+
+filtered as (
+
+    select
+        ticker,
+        concept,
+        value::float          as value,
+        unit,
+        period_end::date      as period_end,
+        period_start::date    as period_start,
+        form,
+        filed::date           as filed,
+        fy,
+        fp,
+        accession,
+        loaded_at
+    from source
+    where concept in (
+        'Revenues',
+        'GrossProfit',
+        'OperatingIncomeLoss',
+        'NetIncomeLoss',
+        'ResearchAndDevelopmentExpense',
+        'CapitalExpendituresIncurringObligation',   -- capex
+        'Assets',
+        'CashAndCashEquivalentsAtCarryingValue'
+    )
+      and unit in ('USD', 'USD/shares')
+      -- 10-K / 10-Q for domestic filers; 20-F for foreign filers (TSM, ASML, ARM)
+      and form in ('10-K', '10-Q', '20-F')
+
+),
+
+deduped as (
+
+    select
+        *,
+        row_number() over (
+            partition by ticker, concept, period_end, form
+            order by filed desc
+        ) as _row_num
+    from filtered
+
+)
+
+select
+    ticker,
+    concept,
+    value,
+    unit,
+    period_end,
+    period_start,
+    form,
+    filed,
+    fy,
+    fp,
+    accession,
+    -- true for annual filings regardless of domestic vs foreign filer type
+    (form in ('10-K', '20-F'))  as is_annual,
+    loaded_at
+from deduped
+where _row_num = 1
+  )
+/* {"app": "dbt", "dbt_version": "1.11.0b3", "profile_name": "ai_infra_monitor", "target_name": "dev", "node_id": "model.ai_infra_monitor.stg_xbrl_facts"} */;
+[0m23:54:24.617888 [debug] [Thread-1  ]: SQL status: SUCCESS 1 in 0.231 seconds
+[0m23:54:24.638323 [debug] [Thread-1  ]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'ed1933b2-a856-47cd-937f-19c2d6b3deb3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1271f45b0>]}
+[0m23:54:24.639157 [info ] [Thread-1  ]: 1 of 1 OK created sql view model staging.stg_xbrl_facts ........................ [[32mSUCCESS 1[0m in 0.28s]
+[0m23:54:24.639642 [debug] [Thread-1  ]: Finished running node model.ai_infra_monitor.stg_xbrl_facts
+[0m23:54:24.640461 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m23:54:24.640667 [debug] [MainThread]: Connection 'model.ai_infra_monitor.stg_xbrl_facts' was left open.
+[0m23:54:24.640849 [debug] [MainThread]: On model.ai_infra_monitor.stg_xbrl_facts: Close
+[0m23:54:24.742996 [info ] [MainThread]: 
+[0m23:54:24.743387 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 2.02 seconds (2.02s).
+[0m23:54:24.743933 [debug] [MainThread]: Command end result
+[0m23:54:24.765945 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/nielpal/Documents/ai-infra-monitor/dbt/target/manifest.json
+[0m23:54:24.769991 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/nielpal/Documents/ai-infra-monitor/dbt/target/semantic_manifest.json
+[0m23:54:24.775938 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/nielpal/Documents/ai-infra-monitor/dbt/target/run_results.json
+[0m23:54:24.776238 [info ] [MainThread]: 
+[0m23:54:24.776514 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m23:54:24.776708 [info ] [MainThread]: 
+[0m23:54:24.777153 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m23:54:24.782300 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 4.8960996, "process_in_blocks": "0", "process_kernel_time": 0.761615, "process_mem_max_rss": "213549056", "process_out_blocks": "0", "process_user_time": 4.773159}
+[0m23:54:24.782800 [debug] [MainThread]: Command `dbt run` succeeded at 23:54:24.782732 after 4.90 seconds
+[0m23:54:24.783606 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10aa84970>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x123c66c10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1240fd8e0>]}
+[0m23:54:24.783945 [debug] [MainThread]: Flushing usage events
+[0m23:54:24.924149 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m23:55:08.860473 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bb20910>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10cbdda00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10cbddbe0>]}
+
+
+============================== 23:55:08.864222 | dd04ec00-3a58-4ea5-8ddc-074349894e15 ==============================
+[0m23:55:08.864222 [info ] [MainThread]: Running with dbt=1.11.0-b3
+[0m23:55:08.864609 [debug] [MainThread]: running dbt with arguments {'write_json': 'True', 'use_colors': 'True', 'send_anonymous_usage_stats': 'True', 'empty': 'None', 'log_cache_events': 'False', 'profiles_dir': '/Users/nielpal/.dbt', 'indirect_selection': 'eager', 'fail_fast': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'warn_error': 'None', 'log_path': '/Users/nielpal/Documents/ai-infra-monitor/dbt/logs', 'introspect': 'True', 'debug': 'False', 'partial_parse': 'True', 'quiet': 'False', 'use_experimental_parser': 'False', 'invocation_command': 'dbt test --select stg_xbrl_facts', 'static_parser': 'True', 'log_format': 'default', 'version_check': 'True', 'target_path': 'None', 'printer_width': '80', 'cache_selected_only': 'False', 'no_print': 'None'}
+[0m23:55:10.100944 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'dd04ec00-3a58-4ea5-8ddc-074349894e15', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c437e20>]}
+[0m23:55:10.182437 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'dd04ec00-3a58-4ea5-8ddc-074349894e15', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x124cd8580>]}
+[0m23:55:10.186658 [info ] [MainThread]: Registered adapter: snowflake=1.10.2
+[0m23:55:10.317874 [debug] [MainThread]: checksum: e63134dccc1251cfb572caf0e4aa952f030c125ee3634f3bf2c0a2e1bb6ae349, vars: {}, profile: , target: , version: 1.11.0b3
+[0m23:55:10.471558 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m23:55:10.472288 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m23:55:10.479728 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.ai_infra_monitor.marts
+[0m23:55:10.520666 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'dd04ec00-3a58-4ea5-8ddc-074349894e15', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1252f1130>]}
+[0m23:55:10.634316 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/nielpal/Documents/ai-infra-monitor/dbt/target/manifest.json
+[0m23:55:10.636530 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/nielpal/Documents/ai-infra-monitor/dbt/target/semantic_manifest.json
+[0m23:55:10.663509 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'dd04ec00-3a58-4ea5-8ddc-074349894e15', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x12543c2e0>]}
+[0m23:55:10.665349 [info ] [MainThread]: Found 1 model, 8 data tests, 1 source, 493 macros
+[0m23:55:10.667431 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'dd04ec00-3a58-4ea5-8ddc-074349894e15', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1252b23a0>]}
+[0m23:55:10.670474 [info ] [MainThread]: 
+[0m23:55:10.671006 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m23:55:10.671319 [info ] [MainThread]: 
+[0m23:55:10.672038 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m23:55:10.679107 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_financial_intelligence_staging'
+[0m23:55:10.774669 [debug] [ThreadPool]: Using snowflake connection "list_financial_intelligence_staging"
+[0m23:55:10.775724 [debug] [ThreadPool]: On list_financial_intelligence_staging: show objects in financial_intelligence.staging
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.0b3", "profile_name": "ai_infra_monitor", "target_name": "dev", "connection_name": "list_financial_intelligence_staging"} */;
+[0m23:55:10.776046 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m23:55:14.358841 [debug] [ThreadPool]: SQL status: SUCCESS 2 in 3.582 seconds
+[0m23:55:14.370877 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'dd04ec00-3a58-4ea5-8ddc-074349894e15', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x125435430>]}
+[0m23:55:14.375578 [debug] [Thread-1  ]: Began running node test.ai_infra_monitor.accepted_values_stg_xbrl_facts_concept__Revenues__GrossProfit__OperatingIncomeLoss__NetIncomeLoss__ResearchAndDevelopmentExpense__CapitalExpendituresIncurringObligation__Assets__CashAndCashEquivalentsAtCarryingValue.84682a5914
+[0m23:55:14.376554 [info ] [Thread-1  ]: 1 of 8 START test accepted_values_stg_xbrl_facts_concept__Revenues__GrossProfit__OperatingIncomeLoss__NetIncomeLoss__ResearchAndDevelopmentExpense__CapitalExpendituresIncurringObligation__Assets__CashAndCashEquivalentsAtCarryingValue  [RUN]
+[0m23:55:14.377629 [debug] [Thread-2  ]: Began running node test.ai_infra_monitor.accepted_values_stg_xbrl_facts_form__10_K__10_Q__20_F.677d3bbdbd
+[0m23:55:14.378270 [debug] [Thread-3  ]: Began running node test.ai_infra_monitor.not_null_stg_xbrl_facts_concept.ed58f91fde
+[0m23:55:14.379197 [debug] [Thread-1  ]: Re-using an available connection from the pool (formerly list_financial_intelligence_staging, now test.ai_infra_monitor.accepted_values_stg_xbrl_facts_concept__Revenues__GrossProfit__OperatingIncomeLoss__NetIncomeLoss__ResearchAndDevelopmentExpense__CapitalExpendituresIncurringObligation__Assets__CashAndCashEquivalentsAtCarryingValue.84682a5914)
+[0m23:55:14.379724 [debug] [Thread-4  ]: Began running node test.ai_infra_monitor.not_null_stg_xbrl_facts_form.648260d342
+[0m23:55:14.380413 [info ] [Thread-2  ]: 2 of 8 START test accepted_values_stg_xbrl_facts_form__10_K__10_Q__20_F ........ [RUN]
+[0m23:55:14.381002 [info ] [Thread-3  ]: 3 of 8 START test not_null_stg_xbrl_facts_concept .............................. [RUN]
+[0m23:55:14.384461 [debug] [Thread-1  ]: Began compiling node test.ai_infra_monitor.accepted_values_stg_xbrl_facts_concept__Revenues__GrossProfit__OperatingIncomeLoss__NetIncomeLoss__ResearchAndDevelopmentExpense__CapitalExpendituresIncurringObligation__Assets__CashAndCashEquivalentsAtCarryingValue.84682a5914
+[0m23:55:14.385568 [info ] [Thread-4  ]: 4 of 8 START test not_null_stg_xbrl_facts_form ................................. [RUN]
+[0m23:55:14.386518 [debug] [Thread-2  ]: Acquiring new snowflake connection 'test.ai_infra_monitor.accepted_values_stg_xbrl_facts_form__10_K__10_Q__20_F.677d3bbdbd'
+[0m23:55:14.387184 [debug] [Thread-3  ]: Acquiring new snowflake connection 'test.ai_infra_monitor.not_null_stg_xbrl_facts_concept.ed58f91fde'
+[0m23:55:14.401061 [debug] [Thread-4  ]: Acquiring new snowflake connection 'test.ai_infra_monitor.not_null_stg_xbrl_facts_form.648260d342'
+[0m23:55:14.409985 [debug] [Thread-2  ]: Began compiling node test.ai_infra_monitor.accepted_values_stg_xbrl_facts_form__10_K__10_Q__20_F.677d3bbdbd
+[0m23:55:14.423598 [debug] [Thread-1  ]: Writing injected SQL for node "test.ai_infra_monitor.accepted_values_stg_xbrl_facts_concept__Revenues__GrossProfit__OperatingIncomeLoss__NetIncomeLoss__ResearchAndDevelopmentExpense__CapitalExpendituresIncurringObligation__Assets__CashAndCashEquivalentsAtCarryingValue.84682a5914"
+[0m23:55:14.424032 [debug] [Thread-3  ]: Began compiling node test.ai_infra_monitor.not_null_stg_xbrl_facts_concept.ed58f91fde
+[0m23:55:14.424326 [debug] [Thread-4  ]: Began compiling node test.ai_infra_monitor.not_null_stg_xbrl_facts_form.648260d342
+[0m23:55:14.429586 [debug] [Thread-2  ]: Writing injected SQL for node "test.ai_infra_monitor.accepted_values_stg_xbrl_facts_form__10_K__10_Q__20_F.677d3bbdbd"
+[0m23:55:14.436594 [debug] [Thread-3  ]: Writing injected SQL for node "test.ai_infra_monitor.not_null_stg_xbrl_facts_concept.ed58f91fde"
+[0m23:55:14.439995 [debug] [Thread-4  ]: Writing injected SQL for node "test.ai_infra_monitor.not_null_stg_xbrl_facts_form.648260d342"
+[0m23:55:14.440624 [debug] [Thread-1  ]: Began executing node test.ai_infra_monitor.accepted_values_stg_xbrl_facts_concept__Revenues__GrossProfit__OperatingIncomeLoss__NetIncomeLoss__ResearchAndDevelopmentExpense__CapitalExpendituresIncurringObligation__Assets__CashAndCashEquivalentsAtCarryingValue.84682a5914
+[0m23:55:14.447241 [debug] [Thread-2  ]: Began executing node test.ai_infra_monitor.accepted_values_stg_xbrl_facts_form__10_K__10_Q__20_F.677d3bbdbd
+[0m23:55:14.457623 [debug] [Thread-1  ]: Writing runtime sql for node "test.ai_infra_monitor.accepted_values_stg_xbrl_facts_concept__Revenues__GrossProfit__OperatingIncomeLoss__NetIncomeLoss__ResearchAndDevelopmentExpense__CapitalExpendituresIncurringObligation__Assets__CashAndCashEquivalentsAtCarryingValue.84682a5914"
+[0m23:55:14.457992 [debug] [Thread-3  ]: Began executing node test.ai_infra_monitor.not_null_stg_xbrl_facts_concept.ed58f91fde
+[0m23:55:14.460316 [debug] [Thread-2  ]: Writing runtime sql for node "test.ai_infra_monitor.accepted_values_stg_xbrl_facts_form__10_K__10_Q__20_F.677d3bbdbd"
+[0m23:55:14.460724 [debug] [Thread-4  ]: Began executing node test.ai_infra_monitor.not_null_stg_xbrl_facts_form.648260d342
+[0m23:55:14.465367 [debug] [Thread-3  ]: Writing runtime sql for node "test.ai_infra_monitor.not_null_stg_xbrl_facts_concept.ed58f91fde"
+[0m23:55:14.467972 [debug] [Thread-4  ]: Writing runtime sql for node "test.ai_infra_monitor.not_null_stg_xbrl_facts_form.648260d342"
+[0m23:55:14.469055 [debug] [Thread-2  ]: Using snowflake connection "test.ai_infra_monitor.accepted_values_stg_xbrl_facts_form__10_K__10_Q__20_F.677d3bbdbd"
+[0m23:55:14.469741 [debug] [Thread-1  ]: Using snowflake connection "test.ai_infra_monitor.accepted_values_stg_xbrl_facts_concept__Revenues__GrossProfit__OperatingIncomeLoss__NetIncomeLoss__ResearchAndDevelopmentExpense__CapitalExpendituresIncurringObligation__Assets__CashAndCashEquivalentsAtCarryingValue.84682a5914"
+[0m23:55:14.470143 [debug] [Thread-2  ]: On test.ai_infra_monitor.accepted_values_stg_xbrl_facts_form__10_K__10_Q__20_F.677d3bbdbd: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        form as value_field,
+        count(*) as n_records
+
+    from financial_intelligence.staging.stg_xbrl_facts
+    group by form
+
+)
+
+select *
+from all_values
+where value_field not in (
+    '10-K','10-Q','20-F'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.11.0b3", "profile_name": "ai_infra_monitor", "target_name": "dev", "node_id": "test.ai_infra_monitor.accepted_values_stg_xbrl_facts_form__10_K__10_Q__20_F.677d3bbdbd"} */
+[0m23:55:14.470612 [debug] [Thread-3  ]: Using snowflake connection "test.ai_infra_monitor.not_null_stg_xbrl_facts_concept.ed58f91fde"
+[0m23:55:14.470894 [debug] [Thread-1  ]: On test.ai_infra_monitor.accepted_values_stg_xbrl_facts_concept__Revenues__GrossProfit__OperatingIncomeLoss__NetIncomeLoss__ResearchAndDevelopmentExpense__CapitalExpendituresIncurringObligation__Assets__CashAndCashEquivalentsAtCarryingValue.84682a5914: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        concept as value_field,
+        count(*) as n_records
+
+    from financial_intelligence.staging.stg_xbrl_facts
+    group by concept
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'Revenues','GrossProfit','OperatingIncomeLoss','NetIncomeLoss','ResearchAndDevelopmentExpense','CapitalExpendituresIncurringObligation','Assets','CashAndCashEquivalentsAtCarryingValue'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.11.0b3", "profile_name": "ai_infra_monitor", "target_name": "dev", "node_id": "test.ai_infra_monitor.accepted_values_stg_xbrl_facts_concept__Revenues__GrossProfit__OperatingIncomeLoss__NetIncomeLoss__ResearchAndDevelopmentExpense__CapitalExpendituresIncurringObligation__Assets__CashAndCashEquivalentsAtCarryingValue.84682a5914"} */
+[0m23:55:14.471517 [debug] [Thread-4  ]: Using snowflake connection "test.ai_infra_monitor.not_null_stg_xbrl_facts_form.648260d342"
+[0m23:55:14.471967 [debug] [Thread-2  ]: Opening a new connection, currently in state init
+[0m23:55:14.472332 [debug] [Thread-3  ]: On test.ai_infra_monitor.not_null_stg_xbrl_facts_concept.ed58f91fde: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select concept
+from financial_intelligence.staging.stg_xbrl_facts
+where concept is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.11.0b3", "profile_name": "ai_infra_monitor", "target_name": "dev", "node_id": "test.ai_infra_monitor.not_null_stg_xbrl_facts_concept.ed58f91fde"} */
+[0m23:55:14.472691 [debug] [Thread-4  ]: On test.ai_infra_monitor.not_null_stg_xbrl_facts_form.648260d342: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select form
+from financial_intelligence.staging.stg_xbrl_facts
+where form is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.11.0b3", "profile_name": "ai_infra_monitor", "target_name": "dev", "node_id": "test.ai_infra_monitor.not_null_stg_xbrl_facts_form.648260d342"} */
+[0m23:55:14.474237 [debug] [Thread-3  ]: Opening a new connection, currently in state init
+[0m23:55:14.474833 [debug] [Thread-4  ]: Opening a new connection, currently in state init
+[0m23:55:15.446911 [debug] [Thread-1  ]: SQL status: SUCCESS 1 in 0.974 seconds
+[0m23:55:15.468384 [info ] [Thread-1  ]: 1 of 8 PASS accepted_values_stg_xbrl_facts_concept__Revenues__GrossProfit__OperatingIncomeLoss__NetIncomeLoss__ResearchAndDevelopmentExpense__CapitalExpendituresIncurringObligation__Assets__CashAndCashEquivalentsAtCarryingValue  [[32mPASS[0m in 1.09s]
+[0m23:55:15.469021 [debug] [Thread-1  ]: Finished running node test.ai_infra_monitor.accepted_values_stg_xbrl_facts_concept__Revenues__GrossProfit__OperatingIncomeLoss__NetIncomeLoss__ResearchAndDevelopmentExpense__CapitalExpendituresIncurringObligation__Assets__CashAndCashEquivalentsAtCarryingValue.84682a5914
+[0m23:55:15.469371 [debug] [Thread-1  ]: Began running node test.ai_infra_monitor.not_null_stg_xbrl_facts_is_annual.54ab1887e3
+[0m23:55:15.469745 [info ] [Thread-1  ]: 5 of 8 START test not_null_stg_xbrl_facts_is_annual ............................ [RUN]
+[0m23:55:15.470094 [debug] [Thread-1  ]: Re-using an available connection from the pool (formerly test.ai_infra_monitor.accepted_values_stg_xbrl_facts_concept__Revenues__GrossProfit__OperatingIncomeLoss__NetIncomeLoss__ResearchAndDevelopmentExpense__CapitalExpendituresIncurringObligation__Assets__CashAndCashEquivalentsAtCarryingValue.84682a5914, now test.ai_infra_monitor.not_null_stg_xbrl_facts_is_annual.54ab1887e3)
+[0m23:55:15.470345 [debug] [Thread-1  ]: Began compiling node test.ai_infra_monitor.not_null_stg_xbrl_facts_is_annual.54ab1887e3
+[0m23:55:15.477668 [debug] [Thread-1  ]: Writing injected SQL for node "test.ai_infra_monitor.not_null_stg_xbrl_facts_is_annual.54ab1887e3"
+[0m23:55:15.479284 [debug] [Thread-1  ]: Began executing node test.ai_infra_monitor.not_null_stg_xbrl_facts_is_annual.54ab1887e3
+[0m23:55:15.481522 [debug] [Thread-1  ]: Writing runtime sql for node "test.ai_infra_monitor.not_null_stg_xbrl_facts_is_annual.54ab1887e3"
+[0m23:55:15.482534 [debug] [Thread-1  ]: Using snowflake connection "test.ai_infra_monitor.not_null_stg_xbrl_facts_is_annual.54ab1887e3"
+[0m23:55:15.482895 [debug] [Thread-1  ]: On test.ai_infra_monitor.not_null_stg_xbrl_facts_is_annual.54ab1887e3: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select is_annual
+from financial_intelligence.staging.stg_xbrl_facts
+where is_annual is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.11.0b3", "profile_name": "ai_infra_monitor", "target_name": "dev", "node_id": "test.ai_infra_monitor.not_null_stg_xbrl_facts_is_annual.54ab1887e3"} */
+[0m23:55:16.044660 [debug] [Thread-1  ]: SQL status: SUCCESS 1 in 0.561 seconds
+[0m23:55:16.048062 [info ] [Thread-1  ]: 5 of 8 PASS not_null_stg_xbrl_facts_is_annual .................................. [[32mPASS[0m in 0.58s]
+[0m23:55:16.048534 [debug] [Thread-1  ]: Finished running node test.ai_infra_monitor.not_null_stg_xbrl_facts_is_annual.54ab1887e3
+[0m23:55:16.048969 [debug] [Thread-1  ]: Began running node test.ai_infra_monitor.not_null_stg_xbrl_facts_period_end.8ef63bb169
+[0m23:55:16.049420 [info ] [Thread-1  ]: 6 of 8 START test not_null_stg_xbrl_facts_period_end ........................... [RUN]
+[0m23:55:16.049890 [debug] [Thread-1  ]: Re-using an available connection from the pool (formerly test.ai_infra_monitor.not_null_stg_xbrl_facts_is_annual.54ab1887e3, now test.ai_infra_monitor.not_null_stg_xbrl_facts_period_end.8ef63bb169)
+[0m23:55:16.051172 [debug] [Thread-1  ]: Began compiling node test.ai_infra_monitor.not_null_stg_xbrl_facts_period_end.8ef63bb169
+[0m23:55:16.055261 [debug] [Thread-1  ]: Writing injected SQL for node "test.ai_infra_monitor.not_null_stg_xbrl_facts_period_end.8ef63bb169"
+[0m23:55:16.055861 [debug] [Thread-1  ]: Began executing node test.ai_infra_monitor.not_null_stg_xbrl_facts_period_end.8ef63bb169
+[0m23:55:16.058781 [debug] [Thread-1  ]: Writing runtime sql for node "test.ai_infra_monitor.not_null_stg_xbrl_facts_period_end.8ef63bb169"
+[0m23:55:16.059529 [debug] [Thread-1  ]: Using snowflake connection "test.ai_infra_monitor.not_null_stg_xbrl_facts_period_end.8ef63bb169"
+[0m23:55:16.059764 [debug] [Thread-1  ]: On test.ai_infra_monitor.not_null_stg_xbrl_facts_period_end.8ef63bb169: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select period_end
+from financial_intelligence.staging.stg_xbrl_facts
+where period_end is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.11.0b3", "profile_name": "ai_infra_monitor", "target_name": "dev", "node_id": "test.ai_infra_monitor.not_null_stg_xbrl_facts_period_end.8ef63bb169"} */
+[0m23:55:16.625504 [debug] [Thread-1  ]: SQL status: SUCCESS 1 in 0.565 seconds
+[0m23:55:16.632997 [info ] [Thread-1  ]: 6 of 8 PASS not_null_stg_xbrl_facts_period_end ................................. [[32mPASS[0m in 0.58s]
+[0m23:55:16.634369 [debug] [Thread-1  ]: Finished running node test.ai_infra_monitor.not_null_stg_xbrl_facts_period_end.8ef63bb169
+[0m23:55:16.634700 [debug] [Thread-1  ]: Began running node test.ai_infra_monitor.not_null_stg_xbrl_facts_ticker.46f9d09f47
+[0m23:55:16.635001 [info ] [Thread-1  ]: 7 of 8 START test not_null_stg_xbrl_facts_ticker ............................... [RUN]
+[0m23:55:16.635715 [debug] [Thread-1  ]: Re-using an available connection from the pool (formerly test.ai_infra_monitor.not_null_stg_xbrl_facts_period_end.8ef63bb169, now test.ai_infra_monitor.not_null_stg_xbrl_facts_ticker.46f9d09f47)
+[0m23:55:16.635990 [debug] [Thread-1  ]: Began compiling node test.ai_infra_monitor.not_null_stg_xbrl_facts_ticker.46f9d09f47
+[0m23:55:16.640148 [debug] [Thread-1  ]: Writing injected SQL for node "test.ai_infra_monitor.not_null_stg_xbrl_facts_ticker.46f9d09f47"
+[0m23:55:16.641135 [debug] [Thread-1  ]: Began executing node test.ai_infra_monitor.not_null_stg_xbrl_facts_ticker.46f9d09f47
+[0m23:55:16.645211 [debug] [Thread-1  ]: Writing runtime sql for node "test.ai_infra_monitor.not_null_stg_xbrl_facts_ticker.46f9d09f47"
+[0m23:55:16.649095 [debug] [Thread-1  ]: Using snowflake connection "test.ai_infra_monitor.not_null_stg_xbrl_facts_ticker.46f9d09f47"
+[0m23:55:16.649642 [debug] [Thread-1  ]: On test.ai_infra_monitor.not_null_stg_xbrl_facts_ticker.46f9d09f47: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select ticker
+from financial_intelligence.staging.stg_xbrl_facts
+where ticker is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.11.0b3", "profile_name": "ai_infra_monitor", "target_name": "dev", "node_id": "test.ai_infra_monitor.not_null_stg_xbrl_facts_ticker.46f9d09f47"} */
+[0m23:55:16.800181 [debug] [Thread-1  ]: SQL status: SUCCESS 1 in 0.150 seconds
+[0m23:55:16.803335 [info ] [Thread-1  ]: 7 of 8 PASS not_null_stg_xbrl_facts_ticker ..................................... [[32mPASS[0m in 0.17s]
+[0m23:55:16.803770 [debug] [Thread-1  ]: Finished running node test.ai_infra_monitor.not_null_stg_xbrl_facts_ticker.46f9d09f47
+[0m23:55:16.804168 [debug] [Thread-1  ]: Began running node test.ai_infra_monitor.not_null_stg_xbrl_facts_value.d248a7afc1
+[0m23:55:16.804629 [info ] [Thread-1  ]: 8 of 8 START test not_null_stg_xbrl_facts_value ................................ [RUN]
+[0m23:55:16.804931 [debug] [Thread-1  ]: Re-using an available connection from the pool (formerly test.ai_infra_monitor.not_null_stg_xbrl_facts_ticker.46f9d09f47, now test.ai_infra_monitor.not_null_stg_xbrl_facts_value.d248a7afc1)
+[0m23:55:16.805300 [debug] [Thread-1  ]: Began compiling node test.ai_infra_monitor.not_null_stg_xbrl_facts_value.d248a7afc1
+[0m23:55:16.810900 [debug] [Thread-1  ]: Writing injected SQL for node "test.ai_infra_monitor.not_null_stg_xbrl_facts_value.d248a7afc1"
+[0m23:55:16.811571 [debug] [Thread-1  ]: Began executing node test.ai_infra_monitor.not_null_stg_xbrl_facts_value.d248a7afc1
+[0m23:55:16.814435 [debug] [Thread-1  ]: Writing runtime sql for node "test.ai_infra_monitor.not_null_stg_xbrl_facts_value.d248a7afc1"
+[0m23:55:16.815228 [debug] [Thread-1  ]: Using snowflake connection "test.ai_infra_monitor.not_null_stg_xbrl_facts_value.d248a7afc1"
+[0m23:55:16.815491 [debug] [Thread-1  ]: On test.ai_infra_monitor.not_null_stg_xbrl_facts_value.d248a7afc1: select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select value
+from financial_intelligence.staging.stg_xbrl_facts
+where value is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "1.11.0b3", "profile_name": "ai_infra_monitor", "target_name": "dev", "node_id": "test.ai_infra_monitor.not_null_stg_xbrl_facts_value.d248a7afc1"} */
+[0m23:55:16.944315 [debug] [Thread-1  ]: SQL status: SUCCESS 1 in 0.128 seconds
+[0m23:55:16.945845 [info ] [Thread-1  ]: 8 of 8 PASS not_null_stg_xbrl_facts_value ...................................... [[32mPASS[0m in 0.14s]
+[0m23:55:16.946221 [debug] [Thread-1  ]: Finished running node test.ai_infra_monitor.not_null_stg_xbrl_facts_value.d248a7afc1
+[0m23:55:17.729401 [debug] [Thread-4  ]: SQL status: SUCCESS 1 in 3.254 seconds
+[0m23:55:17.733079 [info ] [Thread-4  ]: 4 of 8 PASS not_null_stg_xbrl_facts_form ....................................... [[32mPASS[0m in 3.33s]
+[0m23:55:17.734102 [debug] [Thread-4  ]: Finished running node test.ai_infra_monitor.not_null_stg_xbrl_facts_form.648260d342
+[0m23:55:18.042529 [debug] [Thread-3  ]: SQL status: SUCCESS 1 in 3.568 seconds
+[0m23:55:18.043892 [info ] [Thread-3  ]: 3 of 8 PASS not_null_stg_xbrl_facts_concept .................................... [[32mPASS[0m in 3.66s]
+[0m23:55:18.044260 [debug] [Thread-3  ]: Finished running node test.ai_infra_monitor.not_null_stg_xbrl_facts_concept.ed58f91fde
+[0m23:55:18.074543 [debug] [Thread-2  ]: SQL status: SUCCESS 1 in 3.602 seconds
+[0m23:55:18.078589 [info ] [Thread-2  ]: 2 of 8 PASS accepted_values_stg_xbrl_facts_form__10_K__10_Q__20_F .............. [[32mPASS[0m in 3.69s]
+[0m23:55:18.079551 [debug] [Thread-2  ]: Finished running node test.ai_infra_monitor.accepted_values_stg_xbrl_facts_form__10_K__10_Q__20_F.677d3bbdbd
+[0m23:55:18.081357 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m23:55:18.081665 [debug] [MainThread]: Connection 'test.ai_infra_monitor.not_null_stg_xbrl_facts_value.d248a7afc1' was left open.
+[0m23:55:18.082045 [debug] [MainThread]: On test.ai_infra_monitor.not_null_stg_xbrl_facts_value.d248a7afc1: Close
+[0m23:55:18.189563 [debug] [MainThread]: Connection 'test.ai_infra_monitor.accepted_values_stg_xbrl_facts_form__10_K__10_Q__20_F.677d3bbdbd' was left open.
+[0m23:55:18.190766 [debug] [MainThread]: On test.ai_infra_monitor.accepted_values_stg_xbrl_facts_form__10_K__10_Q__20_F.677d3bbdbd: Close
+[0m23:55:18.301556 [debug] [MainThread]: Connection 'test.ai_infra_monitor.not_null_stg_xbrl_facts_concept.ed58f91fde' was left open.
+[0m23:55:18.302530 [debug] [MainThread]: On test.ai_infra_monitor.not_null_stg_xbrl_facts_concept.ed58f91fde: Close
+[0m23:55:18.413341 [debug] [MainThread]: Connection 'test.ai_infra_monitor.not_null_stg_xbrl_facts_form.648260d342' was left open.
+[0m23:55:18.413800 [debug] [MainThread]: On test.ai_infra_monitor.not_null_stg_xbrl_facts_form.648260d342: Close
+[0m23:55:18.513600 [info ] [MainThread]: 
+[0m23:55:18.514015 [info ] [MainThread]: Finished running 8 data tests in 0 hours 0 minutes and 7.84 seconds (7.84s).
+[0m23:55:18.515210 [debug] [MainThread]: Command end result
+[0m23:55:18.537327 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/nielpal/Documents/ai-infra-monitor/dbt/target/manifest.json
+[0m23:55:18.539391 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/nielpal/Documents/ai-infra-monitor/dbt/target/semantic_manifest.json
+[0m23:55:18.547395 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/nielpal/Documents/ai-infra-monitor/dbt/target/run_results.json
+[0m23:55:18.547790 [info ] [MainThread]: 
+[0m23:55:18.548456 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m23:55:18.549046 [info ] [MainThread]: 
+[0m23:55:18.550201 [info ] [MainThread]: Done. PASS=8 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=8
+[0m23:55:18.555088 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 9.7660475, "process_in_blocks": "0", "process_kernel_time": 0.950413, "process_mem_max_rss": "188235776", "process_out_blocks": "0", "process_user_time": 4.348968}
+[0m23:55:18.555444 [debug] [MainThread]: Command `dbt test` succeeded at 23:55:18.555383 after 9.77 seconds
+[0m23:55:18.555770 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bb20910>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x124e27850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10be27040>]}
+[0m23:55:18.556055 [debug] [MainThread]: Flushing usage events
+[0m23:55:18.791233 [debug] [MainThread]: An error was encountered while trying to flush usage events

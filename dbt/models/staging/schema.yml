@@ -1,0 +1,86 @@
+version: 2
+
+sources:
+  - name: staging
+    description: >
+      Raw ingest layer loaded by the Python ingestion pipeline
+      (ingestion/snowflake_loader.py). Tables are upserted directly from
+      the SEC EDGAR API and should not be edited manually.
+    database: financial_intelligence
+    schema: staging
+    tables:
+      - name: raw_xbrl_facts
+        description: >
+          One row per (ticker, concept, period_end, form) after USD filtering
+          and deduplication. Loaded from the EDGAR companyfacts API by
+          ingestion/snowflake_loader.py. Source of truth for all dbt models.
+        columns:
+          - name: ticker
+            description: Exchange ticker symbol (e.g. NVDA)
+          - name: concept
+            description: Canonical concept name from CONCEPT_MAP in xbrl_parser.py
+          - name: value
+            description: Reported value in USD or USD/shares
+          - name: period_end
+            description: End of the reporting period
+          - name: form
+            description: SEC form type — 10-K, 10-Q, 20-F, or 6-K
+
+models:
+  - name: stg_xbrl_facts
+    description: >
+      Filtered and deduplicated view of raw_xbrl_facts. Restricts to 8
+      canonical financial concepts, USD-denominated values, and 10-K / 10-Q /
+      20-F filings. Deduplicates on (ticker, concept, period_end, form) keeping
+      the most recently filed row to handle restatements. This is the primary
+      input for all mart models.
+    columns:
+      - name: ticker
+        description: Exchange ticker symbol
+        data_tests:
+          - not_null
+
+      - name: concept
+        description: >
+          Canonical concept name. One of: Revenues, GrossProfit,
+          OperatingIncomeLoss, NetIncomeLoss, ResearchAndDevelopmentExpense,
+          CapitalExpendituresIncurringObligation, Assets,
+          CashAndCashEquivalentsAtCarryingValue
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - Revenues
+                  - GrossProfit
+                  - OperatingIncomeLoss
+                  - NetIncomeLoss
+                  - ResearchAndDevelopmentExpense
+                  - CapitalExpendituresIncurringObligation
+                  - Assets
+                  - CashAndCashEquivalentsAtCarryingValue
+
+      - name: value
+        description: Reported financial value in USD (or USD/shares for EPS)
+        data_tests:
+          - not_null
+
+      - name: period_end
+        description: End date of the reporting period (fiscal quarter or year end)
+        data_tests:
+          - not_null
+
+      - name: form
+        description: SEC form type
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['10-K', '10-Q', '20-F']
+
+      - name: is_annual
+        description: >
+          True if the row comes from an annual filing (10-K or 20-F).
+          False for quarterly 10-Q filings.
+        data_tests:
+          - not_null
