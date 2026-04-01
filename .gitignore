@@ -1,4 +1,5 @@
 data/last_seen.json
 .env
+dbt/profiles.yml
 dbt/target/
 dbt/logs/
