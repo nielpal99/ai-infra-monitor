@@ -1,2 +1,4 @@
 data/last_seen.json
 .env
+dbt/target/
+dbt/logs/
