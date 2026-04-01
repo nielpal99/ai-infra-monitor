@@ -84,3 +84,63 @@ models:
           Change in gross_margin_pct vs the prior period of the same form type,
           in percentage points. Negative = margin compression. NULL for the first
           period of each (ticker, form) pair.
+
+  - name: fct_peer_benchmarks
+    description: >
+      One row per (peer_group, period_end, metric). Annual filings only.
+      Provides p25 / median / p75 distribution statistics for four margin
+      metrics across seven analyst-defined peer groups. Used for relative
+      positioning — z-scoring a company's metric against its group's median
+      and stddev. Peer group assignment is hardcoded in the CASE statement
+      in the model; update there when the watchlist changes.
+    columns:
+      - name: peer_group
+        description: >
+          Analyst-defined peer group. One of: GPU & Compute, Foundry & Equipment,
+          Memory, Networking, Hyperscalers, AI Software, Custom Silicon, Other.
+        data_tests:
+          - not_null
+
+      - name: period_end
+        description: Fiscal year end date for this cohort snapshot.
+        data_tests:
+          - not_null
+
+      - name: metric
+        description: >
+          Name of the margin metric. One of: gross_margin_pct,
+          operating_margin_pct, net_margin_pct, r_and_d_pct.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - gross_margin_pct
+                  - operating_margin_pct
+                  - net_margin_pct
+                  - r_and_d_pct
+
+      - name: n_companies
+        description: >
+          Number of companies in the peer group with a non-NULL value for
+          this metric in this period. Varies by group and period as not all
+          companies report every concept.
+        data_tests:
+          - not_null
+
+      - name: p25
+        description: 25th percentile value across the peer group (interpolated).
+
+      - name: median
+        description: 50th percentile (median) value across the peer group (interpolated).
+
+      - name: p75
+        description: 75th percentile value across the peer group (interpolated).
+
+      - name: mean
+        description: Arithmetic mean across the peer group. Can be skewed by outliers.
+
+      - name: stddev
+        description: >
+          Population standard deviation across the peer group. Use with mean
+          to z-score any company: z = (company_value - mean) / stddev.
