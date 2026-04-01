@@ -1,0 +1,86 @@
+version: 2
+
+models:
+  - name: fct_company_metrics
+    description: >
+      One row per (ticker, period_end, form). Pivoted from stg_xbrl_facts.
+      Contains raw metrics, margin ratios, and sequential QoQ change columns.
+      Partitioned LAG() means 10-Q rows compare to the prior quarter and
+      10-K rows compare to the prior fiscal year. NULL values indicate the
+      company did not report a concept for that period.
+    columns:
+      - name: ticker
+        description: Exchange ticker symbol
+        data_tests:
+          - not_null
+
+      - name: period_end
+        description: End date of the reporting period (fiscal quarter or year end)
+        data_tests:
+          - not_null
+
+      - name: form
+        description: SEC form type — 10-K, 10-Q, or 20-F
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['10-K', '10-Q', '20-F']
+
+      - name: is_annual
+        description: True if this row is from an annual filing (10-K or 20-F)
+        data_tests:
+          - not_null
+
+      - name: revenue
+        description: Net revenue / net sales in USD. NULL if not reported.
+
+      - name: gross_profit
+        description: Gross profit in USD. NULL if not reported.
+
+      - name: operating_income
+        description: Operating income / loss in USD. NULL if not reported.
+
+      - name: net_income
+        description: Net income / loss in USD. NULL if not reported.
+
+      - name: r_and_d
+        description: Research and development expense in USD. NULL if not reported.
+
+      - name: capex
+        description: >
+          Capital expenditures in USD (positive = spending).
+          Sourced from CapitalExpendituresIncurringObligation or
+          PaymentsToAcquirePropertyPlantAndEquipment. NULL if not reported.
+
+      - name: assets
+        description: Total assets in USD at period end. NULL if not reported.
+
+      - name: cash
+        description: Cash and cash equivalents in USD at period end. NULL if not reported.
+
+      - name: gross_margin_pct
+        description: >
+          Gross profit / revenue × 100. Expressed in percentage points
+          (e.g. 75.0 = 75%). NULL when revenue is NULL or zero.
+
+      - name: operating_margin_pct
+        description: Operating income / revenue × 100. NULL when revenue is NULL or zero.
+
+      - name: net_margin_pct
+        description: Net income / revenue × 100. NULL when revenue is NULL or zero.
+
+      - name: r_and_d_pct
+        description: R&D expense / revenue × 100. NULL when revenue is NULL or zero.
+
+      - name: revenue_qoq_chg
+        description: >
+          Absolute change in revenue vs the prior period of the same form type.
+          For 10-Q rows: change vs prior quarter. For 10-K rows: change vs prior
+          fiscal year. NULL for the first period of each (ticker, form) pair.
+
+      - name: gross_margin_qoq_chg
+        description: >
+          Change in gross_margin_pct vs the prior period of the same form type,
+          in percentage points. Negative = margin compression. NULL for the first
+          period of each (ticker, form) pair.
