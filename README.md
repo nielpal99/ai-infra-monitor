@@ -112,16 +112,18 @@ Tracks XBRL extraction accuracy over time — verifying that parsed metric value
 
 ## Status
 
-**In development.** Not yet operational.
+**Live and running daily.**
 
 | Component | Status |
 |---|---|
-| Snowflake schema design | Planned |
-| EDGAR XBRL ingestor | Planned |
-| dbt models | Planned |
-| Snowflake Streams/Tasks | Planned |
-| Slack alert engine | Planned |
-| Braintrust eval suite | Planned |
+| Snowflake schema | ✅ Complete |
+| EDGAR XBRL ingestor | ✅ Complete — 25,000+ rows across 47 companies |
+| dbt models | ✅ Complete — stg_xbrl_facts, fct_company_metrics, fct_peer_benchmarks |
+| Modal daily scheduler | ✅ Complete — runs 9am ET |
+| 8-K item filtering | ✅ Complete |
+| Slack alert engine | ✅ Complete |
+| Braintrust eval suite | 🚧 In progress |
+| Snowflake Streams/Tasks | ⏭ Deferred — replaced by Modal scheduler |
 
 ---
 
