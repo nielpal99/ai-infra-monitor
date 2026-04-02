@@ -1,5 +1,6 @@
 data/last_seen.json
 .env
+.streamlit/secrets.toml
 dbt/profiles.yml
 dbt/target/
 dbt/logs/
