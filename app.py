@@ -98,7 +98,7 @@ def _color_qoq(val):
 
 st.set_page_config(
     page_title="AI Infrastructure Monitor",
-    page_icon="📡",
+    page_icon="📊",
     layout="wide",
 )
 
