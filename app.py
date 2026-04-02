@@ -120,7 +120,7 @@ with st.spinner("Loading metrics…"):
             "Gross Margin %", "Operating Margin %", "Gross Margin QoQ Chg (pp)",
         ]
 
-        styled = metrics_df.style.applymap(
+        styled = metrics_df.style.map(
             _color_qoq, subset=["Gross Margin QoQ Chg (pp)"]
         ).format({
             "Revenue ($B)": "{:.2f}",
